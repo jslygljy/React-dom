@@ -1,40 +1,103 @@
-<!--
-@Date:   2015-12-01T10:20:28+08:00
-@Last modified time: 2016-07-28T15:38:07+08:00
--->
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>React Getting Started</title>
+<head>
+    <meta charset="utf-8">
+    <title>Basic Example with Click Counter</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
     <style>
-      .show{display: block}
-      .hidden{display: none;}
-    </style>
-  </head>
-  <body>
-    <div id="example"></div>
-    <script src="build/react.js"></script>
-  <script src="build/react-dom.js"></script>
-      <script type='text/jsx'>
-      var LikeButton = React.createClass({
-        getInitialState: function() {
-          return {liked: false};
-        },
-        handleClick: function(event) {
-          this.setState({liked: !this.state.liked});
-        },
-        render: function() {
-          var text = this.state.liked ? 'like' : 'haven\'t liked';
-          return (
-            <p onClick={this.handleClick}>
-              You {text} this. Click to toggle.
-            </p>
-          );
+        .input {
+            width: 200px;
+            height: 200px;
         }
-        });
-        React.render(
-        <LikeButton />,
-        document.getElementById('example')
-        );
-      </script>
-  </body>
+
+        .listradio{
+            width: 50px;height: 50px;border-radius: 50px;border: 1px #000000 solid;display: inline-block;
+        }
+        .listchoose .listradio{
+            background-color: #2b81af;
+        }
+        .listli:hover .listClose,.listchoose:hover .listClose{
+            display: inline-block;
+        }
+        .listClose{
+            color: #A00000;margin-left: 100px;display: none;;
+        }
+    </style>
+</head>
+<body>
+<div id="todoInput"></div>
+<script type="text/babel">
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {ivalue: '',datas:[]};
+        },
+        onkeyDown: function (event) {
+            if(event.keyCode===13){
+                this.state.datas.push({data:event.target.value,choose:false});
+                this.setState({ivalue: event.target.value});
+
+            }
+        },
+        render: function () {
+            return (
+                <div>
+                    <input type = "text" className = 'input' placeholder = 'what to do need' onKeyDown = {this.onkeyDown}/>
+                    <TodoList datas = {this.state.datas}></TodoList>
+                </div >
+            );
+        }
+    });
+
+    var TodoList = React.createClass({
+        handleClick : function (index) {
+            var currentata = this.props.datas[index]
+            currentata.choose = !currentata.choose;
+            //触发渲染
+            this.setState({datas:this.props.datas});
+        },
+        componentWillReceiveProps:function(){
+            this.setState({datas:this.props.datas});
+        },
+        handleremove:function(index){
+            var currentata = this.props.datas;
+            currentata.splice(index-1,1)
+            //触发渲染
+            this.setState({datas:currentata});
+        },
+        render: function () {
+            var _this =this;
+            return (
+                <div>
+                    {
+                    (function(){
+                        if(_this.props.datas&&_this.props.datas.length == 0){
+                            return
+                        } else{
+                            _this.props.datas.map(function(data,index){
+                                return(
+                                    <div className={data.choose?'listchoose':'listli'}
+                                onClick={_this.handleClick.bind(_this,index)}>
+                                <p>
+                                <span className='listradio'></span>
+                                    {data.data}
+                                <span onClick={_this.handleremove.bind(_this,index)} className='listClose'>X</span>
+                                    </p>
+                                    </div>
+                                )
+                            })
+                        }
+                    })()
+                    }
+                </div >
+            )
+        }
+    })
+    ReactDOM.render( < Input / >, document.getElementById('todoInput'));
+</script>
+
+
+</body>
 </html>
+
