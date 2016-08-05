@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<!--
+@Date:   2016-08-03T13:54:37+08:00
+@Last modified time: 2016-08-04T14:50:47+08:00
+-->
 <html>
 <head>
     <meta charset="utf-8">
     <title>Basic Example with Click Counter</title>
     <script src="js/react.js"></script>
     <script src="js/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script src="js/director.js"></script>
+    <script src="js/browser.min.js"></script>
     <style>
         .input {
             width: 200px;
@@ -18,7 +23,8 @@
         .listchoose .listradio{
             background-color: #2b81af;
         }
-        .listli:hover .listClose,.listchoose:hover .listClose{
+        .listItem p{display:inline-block}
+        .listItem:hover .listClose{
             display: inline-block;
         }
         .listClose{
@@ -28,76 +34,121 @@
 </head>
 <body>
 <div id="todoInput"></div>
+<script src="js/local.js"></script>
 <script type="text/babel">
-    var Input = React.createClass({
-        getInitialState: function () {
-            return {ivalue: '',datas:[]};
-        },
-        onkeyDown: function (event) {
-            if(event.keyCode===13){
-                this.state.datas.push({data:event.target.value,choose:false});
-                this.setState({ivalue: event.target.value});
+    (function(){
+      'use strict';
+	    var ENTER_KEY = 13;
+      var Allstats = 'all';
+      var Todoinput = React.createClass({
+          getInitialState: function () {
+              return {
+                  currystats : Allstats,
+                  TodoItem:'',
+                  Todos:app.Utils.store('react-todos')
+              };
+          },
+          inform : function () {
+        		app.Utils.store('react-todos', this.state.Todos);
+            this.setState({Todos:app.Utils.store('react-todos')})
+        	},
+          handleChange : function() {
+            this.setState({TodoItem:event.target.value})
+          },
+          onkeyDown: function (event) {
+              if(event.keyCode === ENTER_KEY){
+                  this.state.Todos = this.state.Todos.concat({
+                    title:event.target.value,
+                    completed: false
+                  });
+                  this.inform();
+              }
+          },
+          render: function () {
+              return (
+                  <div>
+                      <input type = "text" val='' className = 'input' placeholder = 'what to do need' onChange={this.handleChange} onKeyDown = {this.onkeyDown}/>
+                      <TodoList datas = {this.state.Todos}></TodoList>
+                  </div >
+              );
+          }
+      });
 
+      var TodoList = React.createClass({
+
+          getInitialState: function () {
+              return {
+                  Todos: this.props.datas
+              };
+          },
+          inform : function () {
+            app.Utils.store('react-todos',this.state.Todos);
+            this.setState({Todos:app.Utils.store('react-todos')})
+          },
+          handleClick : function (index) {
+              var currentata = this.state.Todos[index]
+              currentata.completed = !currentata.completed;
+              this.inform();
+          },
+          handleremove:function(index){
+              var currentata = this.state.Todos;
+              currentata.splice(index,1);
+              this.inform();
+          },
+          handleChange:function(e){
+            if(e.target.value === 'all'){
+              this.state.Todos = this.state.Todos.map(function (todo) {
+                return app.Utils.extend({}, todo, {completed: true});
+              });
+              this.inform();
+            }else{
+              this.state.Todos = this.state.Todos.map(function (todo) {
+                return app.Utils.extend({}, todo, {completed: false});
+              });
+              this.inform();
             }
-        },
-        render: function () {
-            return (
-                <div>
-                    <input type = "text" className = 'input' placeholder = 'what to do need' onKeyDown = {this.onkeyDown}/>
-                    <TodoList datas = {this.state.datas}></TodoList>
-                </div >
-            );
-        }
-    });
+          },
+          render: function () {
+              var _this = this;
+              var main;
+              var controllist;
+              var todos = app.Utils.store('react-todos');
+              if (todos.length>0) {
+                main =
+                  todos.map(function(data,index){
+                      return(
+                          <div className='listItem'>
+                            <p  className={data.completed?'listchoose':'listli'}
+                              onClick={_this.handleClick.bind(_this,index)}>
+                              <span className='listradio'></span>
+                              {data.title}
+                            </p>
+                            <span onClick={_this.handleremove.bind(_this,index)} className='listClose'>X</span>
+                          </div>
+                      )
+                  });
+                  controllist =
+                    <div>
+                        <select onChange={this.handleChange}>
+                          <option value='all'>全选</option>
+                          <option value='no'>全不选</option>
+                        </select>
+                        <span>clear completed</span>
+                    </div>
+              }
+              return(
+                  <div>
+                       {main}
+                       {controllist}
+                  </div>
+              )
+          }
+      })
+      ReactDOM.render(<Todoinput/>, document.getElementById('todoInput'));
+    })()
 
-    var TodoList = React.createClass({
-        handleClick : function (index) {
-            var currentata = this.props.datas[index]
-            currentata.choose = !currentata.choose;
-            //触发渲染
-            this.setState({datas:this.props.datas});
-        },
-        componentWillReceiveProps:function(){
-            this.setState({datas:this.props.datas});
-        },
-        handleremove:function(index){
-            var currentata = this.props.datas;
-            currentata.splice(index-1,1)
-            //触发渲染
-            this.setState({datas:currentata});
-        },
-        render: function () {
-            var _this =this;
-            return (
-                <div>
-                    {
-                    (function(){
-                        if(_this.props.datas&&_this.props.datas.length == 0){
-                            return
-                        } else{
-                            _this.props.datas.map(function(data,index){
-                                return(
-                                    <div className={data.choose?'listchoose':'listli'}
-                                onClick={_this.handleClick.bind(_this,index)}>
-                                <p>
-                                <span className='listradio'></span>
-                                    {data.data}
-                                <span onClick={_this.handleremove.bind(_this,index)} className='listClose'>X</span>
-                                    </p>
-                                    </div>
-                                )
-                            })
-                        }
-                    })()
-                    }
-                </div >
-            )
-        }
-    })
-    ReactDOM.render( < Input / >, document.getElementById('todoInput'));
 </script>
 
 
 </body>
 </html>
-

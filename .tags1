@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+html	E:\alex\React-dom\index.html	/^<html>$/;"	function	line:6
+head	E:\alex\React-dom\index.html	/^<head>$/;"	function	line:7
+meta	E:\alex\React-dom\index.html	/^    <meta charset="utf-8">$/;"	function	line:8
+title	E:\alex\React-dom\index.html	/^    <title>Basic Example with Click Counter<\/title>$/;"	function	line:9
+script	E:\alex\React-dom\index.html	/^    <script src="js\/react.js"><\/script>$/;"	function	line:10
+script	E:\alex\React-dom\index.html	/^    <script src="js\/react-dom.js"><\/script>$/;"	function	line:11
+script	E:\alex\React-dom\index.html	/^    <script src="js\/director.js"><\/script>$/;"	function	line:12
+script	E:\alex\React-dom\index.html	/^    <script src="js\/browser.min.js"><\/script>$/;"	function	line:13
+style	E:\alex\React-dom\index.html	/^    <style>$/;"	function	line:14
+body	E:\alex\React-dom\index.html	/^<body>$/;"	function	line:35
+div	E:\alex\React-dom\index.html	/^<div id="todoInput"><\/div>$/;"	function	line:36
+script	E:\alex\React-dom\index.html	/^<script src="js\/local.js"><\/script>$/;"	function	line:37
+script	E:\alex\React-dom\index.html	/^<script type="text\/babel">$/;"	function	line:38
+div	E:\alex\React-dom\index.html	/^                  <div>$/;"	function	line:69
+input	E:\alex\React-dom\index.html	/^                      <input type = "text" val='' className = 'input' placeholder = 'what to do need' onChange={this.handleChange} onKeyDown = {this.onkeyDown}\/>$/;"	function	line:70
+TodoList	E:\alex\React-dom\index.html	/^                      <TodoList datas = {this.state.Todos}><\/TodoList>$/;"	function	line:71
+div	E:\alex\React-dom\index.html	/^                          <div className='listItem'>$/;"	function	line:120
+span	E:\alex\React-dom\index.html	/^                              <span className='listradio'><\/span>$/;"	function	line:123
+span	E:\alex\React-dom\index.html	/^                            <span onClick={_this.handleremove.bind(_this,index)} className='listClose'>X<\/span>$/;"	function	line:126
+div	E:\alex\React-dom\index.html	/^                    <div>$/;"	function	line:131
+select	E:\alex\React-dom\index.html	/^                        <select onChange={this.handleChange}>$/;"	function	line:132
+option	E:\alex\React-dom\index.html	/^                          <option value='all'>全选<\/option>$/;"	function	line:133
+option	E:\alex\React-dom\index.html	/^                          <option value='no'>全不选<\/option>$/;"	function	line:134
+span	E:\alex\React-dom\index.html	/^                        <span>clear completed<\/span>$/;"	function	line:136
+div	E:\alex\React-dom\index.html	/^                  <div>$/;"	function	line:140
