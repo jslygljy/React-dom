@@ -4,39 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-html	E:\alex\React-dom\index.html	/^<html lang="en-us">$/;"	function	line:2
-head	E:\alex\React-dom\index.html	/^  <head>$/;"	function	line:3
-meta	E:\alex\React-dom\index.html	/^    <meta charset="UTF-8">$/;"	function	line:4
-title	E:\alex\React-dom\index.html	/^    <title>React-dom by jslygljy<\/title>$/;"	function	line:5
-meta	E:\alex\React-dom\index.html	/^    <meta name="viewport" content="width=device-width, initial-scale=1">$/;"	function	line:6
-link	E:\alex\React-dom\index.html	/^    <link rel="stylesheet" type="text\/css" href="stylesheets\/normalize.css" media="screen">$/;"	function	line:7
-link	E:\alex\React-dom\index.html	/^    <link href='https:\/\/fonts.googleapis.com\/css?family=Open+Sans:400,700' rel='stylesheet' type='text\/css'>$/;"	function	line:8
-link	E:\alex\React-dom\index.html	/^    <link rel="stylesheet" type="text\/css" href="stylesheets\/stylesheet.css" media="screen">$/;"	function	line:9
-link	E:\alex\React-dom\index.html	/^    <link rel="stylesheet" type="text\/css" href="stylesheets\/github-light.css" media="screen">$/;"	function	line:10
-script	E:\alex\React-dom\index.html	/^    <script src="js\/react.js"><\/script>$/;"	function	line:11
-script	E:\alex\React-dom\index.html	/^    <script src="js\/react-dom.js"><\/script>$/;"	function	line:12
-script	E:\alex\React-dom\index.html	/^    <script src="js\/director.js"><\/script>$/;"	function	line:13
-script	E:\alex\React-dom\index.html	/^    <script src="js\/browser.min.js"><\/script>$/;"	function	line:14
-style	E:\alex\React-dom\index.html	/^    <style>$/;"	function	line:15
-body	E:\alex\React-dom\index.html	/^  <body>$/;"	function	line:35
-section	E:\alex\React-dom\index.html	/^    <section class="page-header">$/;"	function	line:36
-h	E:\alex\React-dom\index.html	/^      <h1 class="project-name">React-dom<\/h1>$/;"	function	line:37
-h	E:\alex\React-dom\index.html	/^      <h2 class="project-tagline"><\/h2>$/;"	function	line:38
-a	E:\alex\React-dom\index.html	/^      <a href="https:\/\/github.com\/jslygljy\/React-dom" class="btn">View on GitHub<\/a>$/;"	function	line:39
-a	E:\alex\React-dom\index.html	/^      <a href="https:\/\/github.com\/jslygljy\/React-dom\/zipball\/master" class="btn">Download .zip<\/a>$/;"	function	line:40
-a	E:\alex\React-dom\index.html	/^      <a href="https:\/\/github.com\/jslygljy\/React-dom\/tarball\/master" class="btn">Download .tar.gz<\/a>$/;"	function	line:41
-div	E:\alex\React-dom\index.html	/^    <div id="todoInput"><\/div>$/;"	function	line:43
-script	E:\alex\React-dom\index.html	/^<script src="js\/local.js"><\/script>$/;"	function	line:44
-script	E:\alex\React-dom\index.html	/^<script type="text\/babel">$/;"	function	line:45
-div	E:\alex\React-dom\index.html	/^                  <div>$/;"	function	line:76
-input	E:\alex\React-dom\index.html	/^                      <input type = "text" val='' className = 'input' placeholder = 'what to do need' onChange={this.handleChange} onKeyDown = {this.onkeyDown}\/>$/;"	function	line:77
-TodoList	E:\alex\React-dom\index.html	/^                      <TodoList datas = {this.state.Todos}><\/TodoList>$/;"	function	line:78
-div	E:\alex\React-dom\index.html	/^                          <div className='listItem'>$/;"	function	line:127
-span	E:\alex\React-dom\index.html	/^                              <span className='listradio'><\/span>$/;"	function	line:130
-span	E:\alex\React-dom\index.html	/^                            <span onClick={_this.handleremove.bind(_this,index)} className='listClose'>X<\/span>$/;"	function	line:133
-div	E:\alex\React-dom\index.html	/^                    <div>$/;"	function	line:138
-select	E:\alex\React-dom\index.html	/^                        <select onChange={this.handleChange}>$/;"	function	line:139
-option	E:\alex\React-dom\index.html	/^                          <option value='all'>全选<\/option>$/;"	function	line:140
-option	E:\alex\React-dom\index.html	/^                          <option value='no'>全不选<\/option>$/;"	function	line:141
-span	E:\alex\React-dom\index.html	/^                        <span>clear completed<\/span>$/;"	function	line:143
-div	E:\alex\React-dom\index.html	/^                  <div>$/;"	function	line:147
+React TodoList	E:\alex\React-dom\README.md	/^#React TodoList$/;"	function	line:1
+主要功能	E:\alex\React-dom\README.md	/^#主要功能$/;"	function	line:3
