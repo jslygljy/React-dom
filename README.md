@@ -1,5 +1,19 @@
 #React TodoList
+##安装
+```
+npm install
+```
 
+## Usage
+
+```
+$ cd React-dom
+$ npm-start
+```
+
+## License
+
+MIT
 #主要功能
 * 新增
 * 删除
